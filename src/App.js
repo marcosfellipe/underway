@@ -1,34 +1,80 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+function Titulo(props) {
+  return <h2 className="secao-titulo">{props.value}</h2>;
+}
+
+class Opcao extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    console.log(e.target.classList);
+    e.target.classList.add = "active";
+    console.log(e.target.classList);
+  }
+
+  render() {
+    return <button className={this.props.className} onClick={this.handleClick}>{this.props.value}</button>;
+  }
+}
+
+class Secao extends React.Component {
+  render() {
+    let opcoes = this.props.opcoes.map((opcao, index) => {
+      return <Opcao className="opcao" key={index} value={opcao} />
+    });
+    
+    return (
+      <>
+      <Titulo value={this.props.titulo} />
+      {opcoes}
+      </>
+    );
+  }
+}
+
+function Pao(props) {
+  return (
+    <>
+      <Secao titulo="Tamanho:" opcoes={["15cm", "30cm"]} />
+      <Secao titulo="Pao:" opcoes={["9 Grãos", "9 grãos com aveia e mel", "Italiano", "Três queijos", "Parmesão e orégano"]} />
+    </>
+  );
+}
+
+function Sabor(props) {
+  return <Secao titulo="Sabor:"
+                opcoes={[
+                  "Atum",
+                  "Beef Bacon Chiplote",
+                  "Beef Barbecue Bacon",
+                  "B.M.T&copy;Italiano",
+                  "Frango",
+                  "Frango Defumado com Cream Cheese",
+                  "Frango Empanado",
+                  "Frango Pesto Cream Cheese",
+                  "Frango Ranch",
+                  "Frango Teriyaki",
+                  "Steak Cheddar Cremoso",
+                  "Steak Churrasco",
+                  "Vegetariano"
+                ]}
+            />
+}
+
+
+
 
 function App() {
   return (
-    <div>
-      <h2>Tamanho:</h2>
-      <button>15cm</button>
-      <button>30cm</button>
-      <h2>Pão:</h2>
-      <button>9 grãos</button>
-      <button>9 grãos com aveia e mel</button>
-      <button>Italiano</button>
-      <button>Três queijos</button>
-      <button>Parmesão e orégano</button>
-      <h2>Sabor:</h2>
-      <button>Atum</button>
-      <button>Beef Bacon Chiplote</button>
-      <button>Beef Barbecue Bacon</button>
-      <button>B.M.TCopyright Italiano</button>
-      <button>Frango</button>
-      <button>Frango defumado com Cream Cheese</button>
-      <button>Frango Empanado</button>
-      <button>Frango Pesto Cream Cheese</button>
-      <button>Frango Ranch</button>
-      <button>Frango Teriyaki</button>
-      <button>Steak Cheddar Cremoso</button>
-      <button>Steak Churrasco</button>
-      <button>Vegetariano</button>
-    </div>
+    <>
+    <Pao />
+    <Sabor />
+    </>
   );
 }
 

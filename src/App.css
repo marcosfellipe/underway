@@ -1,1 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
 
+.secao-titulo {
+    font-family: 'Didact Gothic', sans-serif;
+    color: #ffc214;
+}
+
+.opcao {
+    background-color: transparent;
+    border: none;
+    padding: 10px 25px;
+    outline: none;
+    border: 2px solid #ffc214;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+}
