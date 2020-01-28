@@ -9,12 +9,20 @@ class Opcao extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.state = { ativo: false };
   }
 
   handleClick(e) {
-    console.log(e.target.classList);
-    e.target.classList.add = "active";
-    console.log(e.target.classList);
+    /*
+    if(!this.state.ativo) {
+      console.log(e.target.classList);
+      this.setState(state => ({
+        ativo: !state.ativo 
+      }));
+      
+    }
+    console.log(this.state.ativo);
+    */
   }
 
   render() {
@@ -31,7 +39,9 @@ class Secao extends React.Component {
     return (
       <>
       <Titulo value={this.props.titulo} />
-      {opcoes}
+      <div className="opcoes-container">
+        {opcoes}
+      </div>
       </>
     );
   }
@@ -40,14 +50,14 @@ class Secao extends React.Component {
 function Pao(props) {
   return (
     <>
-      <Secao titulo="Tamanho:" opcoes={["15cm", "30cm"]} />
-      <Secao titulo="Pao:" opcoes={["9 Grãos", "9 grãos com aveia e mel", "Italiano", "Três queijos", "Parmesão e orégano"]} />
+      <Secao titulo="Tamanho" opcoes={["15cm", "30cm"]} />
+      <Secao titulo="Pão" opcoes={["9 Grãos", "9 grãos com aveia e mel", "Italiano", "Três queijos", "Parmesão e orégano"]} />
     </>
   );
 }
 
 function Sabor(props) {
-  return <Secao titulo="Sabor:"
+  return <Secao titulo="Sabor"
                 opcoes={[
                   "Atum",
                   "Beef Bacon Chiplote",

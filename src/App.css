@@ -3,15 +3,27 @@
 .secao-titulo {
     font-family: 'Didact Gothic', sans-serif;
     color: #ffc214;
+    text-align: center;
 }
 
 .opcao {
     background-color: transparent;
     border: none;
     padding: 10px 25px;
+    margin: 4px 40px;
     outline: none;
     border: 2px solid #ffc214;
     border-radius: 5px;
     color: white;
     font-size: 18px;
+}
+
+.ativo {
+    background-color: #ffc214;
+    color: #ffffff;
+}
+
+.opcoes-container {
+    display: flex;
+    flex-flow: column;
 }
