@@ -6,34 +6,34 @@ function Titulo(props) {
 }
 
 class Opcao extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = { ativo: false };
-  }
-
-  handleClick(e) {
-    /*
-    if(!this.state.ativo) {
-      console.log(e.target.classList);
-      this.setState(state => ({
-        ativo: !state.ativo 
-      }));
-      
-    }
-    console.log(this.state.ativo);
-    */
-  }
-
   render() {
-    return <button className={this.props.className} onClick={this.handleClick}>{this.props.value}</button>;
+    return <button className={this.props.className} onClick={this.props.onClick}>{this.props.value}</button>;
   }
 }
 
 class Secao extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ativo: null
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    let container = e.target.parentNode;
+    if(this.state.ativo != null) {
+      container.querySelector('.ativo').classList.remove('ativo');
+    }
+    e.target.classList.add('ativo');
+    this.setState({
+      ativo: e.target
+    });
+  }
+
   render() {
     let opcoes = this.props.opcoes.map((opcao, index) => {
-      return <Opcao className="opcao" key={index} value={opcao} />
+      return <Opcao className="opcao" key={index} value={opcao} onClick={this.handleClick} />
     });
     
     return (
