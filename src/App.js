@@ -21,9 +21,9 @@ class Secao extends React.Component {
   }
 
   handleClick(e) {
-    let container = e.target.parentNode;
-    if(this.state.ativo != null) {
-      container.querySelector('.ativo').classList.remove('ativo');
+    let anterior = this.state.ativo;
+    if(anterior != null) {
+      anterior.classList.remove('ativo');
     }
     e.target.classList.add('ativo');
     this.setState({
